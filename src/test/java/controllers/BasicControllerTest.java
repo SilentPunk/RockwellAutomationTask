@@ -4,6 +4,7 @@ import infrastructure.SimplePLC;
 import infrastructure.state.State;
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.collections4.Equator;
+import org.assertj.core.api.Assertions;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -63,7 +64,9 @@ public class BasicControllerTest {
         //when
         BasicController.changeState(employeeList, plcList);
         //then
-        Assert.assertTrue(CollectionUtils.isEqualCollection(expectedResults, plcList, initializeEquator()));
+        Assertions
+                .assertThat(CollectionUtils.isEqualCollection(expectedResults, plcList, initializeEquator()))
+                .isTrue();
 
 
     }

@@ -2,6 +2,7 @@ package resources;
 
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.collections4.Equator;
+import org.assertj.core.api.Assertions;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -55,7 +56,9 @@ public class EmployeeListBuilderTest {
         List<Employee> actualListOfEmployee = EmployeeListBuilder.generateListOfEmployees(givenNumberOfEmployee);
 
         //then
-        Assert.assertTrue(CollectionUtils.isEqualCollection(actualListOfEmployee, expectedListOfEmployee, initializeEmployeeEquator()));
+        Assertions
+                .assertThat(CollectionUtils.isEqualCollection(actualListOfEmployee, expectedListOfEmployee, initializeEmployeeEquator()))
+                .isTrue();
     }
 
     private Equator<Employee> initializeEmployeeEquator() {
